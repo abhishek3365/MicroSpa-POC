@@ -37,7 +37,13 @@ module.exports = (app) => {
     });
       
     app.route('/fruits')
-        .get(appController.itemsController.getAllFruits);
+      .get(appController.itemsController.getAllFruits);
+
+    app.route('/vegetables')
+      .get(appController.itemsController.getAllVegetables);
+
+    app.route('/dairy')
+      .get(appController.itemsController.getAllDairy);
 
 
 }
