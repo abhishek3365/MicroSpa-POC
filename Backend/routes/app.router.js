@@ -45,5 +45,7 @@ module.exports = (app) => {
     app.route('/dairy')
       .get(appController.itemsController.getAllDairy);
 
+    app.route('/items')
+      .post(appController.itemsController.getItems);
 
 }

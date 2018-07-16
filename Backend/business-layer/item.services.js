@@ -2,7 +2,7 @@ module.exports =  ( itemsDao )  => {
     
     var ItemsService= {};
 
-    ItemsService.getAllFruits = ( requestBody ) => {
+    ItemsService.getAllFruits = (  ) => {
         return new Promise( ( resolve,reject ) => {
             itemsDao.getAllFruits (  )
             .then( (result) => {
@@ -13,7 +13,7 @@ module.exports =  ( itemsDao )  => {
         } );
     };
 
-    ItemsService.getAllVegetables = ( requestBody ) => {
+    ItemsService.getAllVegetables = (  ) => {
         return new Promise( ( resolve,reject ) => {
             itemsDao.getAllVegetables (  )
             .then( (result) => {
@@ -24,11 +24,43 @@ module.exports =  ( itemsDao )  => {
         } );
     };
 
-    ItemsService.getAllDairy = ( requestBody ) => {
+    ItemsService.getAllDairy = (  ) => {
         return new Promise( ( resolve,reject ) => {
             itemsDao.getAllDairy (  )
             .then( (result) => {
                 resolve( result );
+            } , (error) => {
+                reject(error);
+            } )
+        } );
+    };
+
+    ItemsService.getItemsForId = ( requestBody ) => {
+        return new Promise( ( resolve,reject ) => {
+            itemsDao.getAllDairy (  )
+            .then( (result) => {
+
+                Promise.all( [itemsDao.getAllFruits() , itemsDao.getAllVegetables() , itemsDao.getAllDairy()] )
+                    .then( ( allResult ) => {
+
+                        var ids = requestBody.items.split(',');
+                        if( ids === undefined )
+                            reject("'items' parameter missing");
+
+                        var items = [ ...allResult[0] , ...allResult[1] , ...allResult[2]  ];
+                        var filteredItems = items.filter( (item) => {
+                            var pos = ids.indexOf(item.itemId.toString());
+                            return pos>-1;
+                        } )
+
+                        resolve( filteredItems );
+
+                    } )
+                    .catch( (error) => {
+                        reject(error)
+                    } )
+                
+
             } , (error) => {
                 reject(error);
             } )
