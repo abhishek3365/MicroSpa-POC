@@ -1,0 +1,27 @@
+[
+    {
+        "itemId" : 11,
+        "itemType" : "dairy",
+        "title" : "Milk"
+    } ,
+    {
+        "itemId" : 12,
+        "itemType" : "dairy",
+        "title" : "Cheese"
+    } ,
+    {
+        "itemId" : 13,
+        "itemType" : "dairy",
+        "title" : "Butter"
+    } ,
+    {
+        "itemId" : 14,
+        "itemType" : "dairy",
+        "title" : "Yogurt"
+    } ,
+    {
+        "itemId" : 15,
+        "itemType" : "dairy",
+        "title" : "Egg"
+    }
+]

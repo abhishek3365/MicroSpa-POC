@@ -1,0 +1,27 @@
+[
+    {
+        "itemId" : 1,
+        "itemType" : "fruit",
+        "title" : "Apple"
+    } ,
+    {
+        "itemId" : 2,
+        "itemType" : "fruit",
+        "title" : "Banana"
+    } ,
+    {
+        "itemId" : 3,
+        "itemType" : "fruit",
+        "title" : "Grape"
+    } ,
+    {
+        "itemId" : 4,
+        "itemType" : "fruit",
+        "title" : "Orange"
+    } ,
+    {
+        "itemId" : 5,
+        "itemType" : "fruit",
+        "title" : "Mango"
+    }
+]
