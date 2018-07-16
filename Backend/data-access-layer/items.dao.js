@@ -1,12 +1,12 @@
 module.exports =  (  )  => {
     
-    var fruitsDao = {};
+    var itemsDao = {};
     
     fruits = require('../data/fruits.json');
     vegetables = require('../data/vegetables.json');
     dairy = require('../data/dairy.json');
 
-    fruitsDao.getAllFruits = ( email , password ) => {
+    itemsDao.getAllFruits = ( email , password ) => {
         
         return new Promise( (resolve,reject) => {
             resolve( fruits )

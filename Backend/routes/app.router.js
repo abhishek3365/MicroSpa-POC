@@ -8,7 +8,7 @@ module.exports = (app) => {
     
     app.use(function(req, res, next) {
 
-      var token = req.body.token || req.param('token') || req.get('x-access-token');
+      var token = req.body.token || req.get('x-access-token');
     
       if (token) {
     
@@ -36,8 +36,8 @@ module.exports = (app) => {
       
     });
       
-    // app.route('/fruits')
-    //     .get(appController.fruitsController.getAllFruits);
+    app.route('/fruits')
+        .get(appController.itemsController.getAllFruits);
 
 
 }
