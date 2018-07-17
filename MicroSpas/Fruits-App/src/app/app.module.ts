@@ -17,13 +17,18 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers } from './store/app.store';
 import { AuthGuard } from './services/auth-guard.service';
+import { ItemListComponent } from './item-list/item-list.component';
+import { ShoppingListComponent } from './shopping-list/shopping-list.component';
+import { ItemsService } from './services/items.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     MainComponent,
-    HeaderComponent
+    HeaderComponent,
+    ItemListComponent,
+    ShoppingListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +43,7 @@ import { AuthGuard } from './services/auth-guard.service';
       maxAge: 10
     })
   ],
-  providers: [ LoginService,AuthGuard ],
+  providers: [ LoginService, AuthGuard, ItemsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
