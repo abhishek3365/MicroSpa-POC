@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a routerLink="/" class="navbar-brand">Super Market</a>
+    </div>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li routerLinkActive="active"><a routerLink="/items-list">Fruits</a></li>
+        <li routerLinkActive="active"><a routerLink="/shopping-list">Shopping List</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+
+        <li><a
+          style="cursor: pointer;"
+          (click)="onLogout()"
+          *ngIf="(authState | async).authenticated">Logout</a></li>
+          
+      </ul>
+    </div>
+  </div>
+</nav>

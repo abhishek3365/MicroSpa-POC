@@ -4,6 +4,11 @@ import { HttpClient } from '@angular/common/http';
 import { resolve } from 'url';
 import { Constants } from '../utils/constants';
 import * as moment from "moment";
+import { Store } from '@ngrx/store';
+
+import * as AuthActions from '../store/actions/auth.actions';
+import * as fromApp from '../store/app.store';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginService {
@@ -13,14 +18,13 @@ export class LoginService {
   name;
   token;
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient , private store: Store<fromApp.AppState>, public router : Router ) { 
      this.email = localStorage.getItem('email');
      this.userType = localStorage.getItem('userType');
      this.name = localStorage.getItem('name');
      this.token = localStorage.getItem('token');
   }
     
-
   storeUserDetails(userDetails) {
     this.email = userDetails.email;
   }
@@ -51,6 +55,8 @@ export class LoginService {
             localStorage.setItem( 'token' , this.token );
             localStorage.setItem( 'expires_at' , JSON.stringify(expiresAt.valueOf()) );
 
+            this.signIn( this.token );
+
             resolve();
           } else {
             reject ( responseJson.error.error_message );
@@ -73,6 +79,13 @@ export class LoginService {
     localStorage.removeItem( 'email' );
     localStorage.removeItem( 'token' );
     localStorage.removeItem( 'name' );
+    this.store.dispatch( new AuthActions.Logout() );
+    this.router.navigate( ['/login'] );
+  }
+
+  signIn(token : string) {
+    this.store.dispatch( new AuthActions.Signin() );
+    this.store.dispatch( new AuthActions.SetToken(token) );
   }
 
 }
