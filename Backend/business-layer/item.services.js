@@ -43,7 +43,7 @@ module.exports =  ( itemsDao )  => {
                 Promise.all( [itemsDao.getAllFruits() , itemsDao.getAllVegetables() , itemsDao.getAllDairy()] )
                     .then( ( allResult ) => {
 
-                        var ids = requestBody.items.split(',');
+                        var ids = requestBody.items
                         if( ids === undefined )
                             reject("'items' parameter missing");
 

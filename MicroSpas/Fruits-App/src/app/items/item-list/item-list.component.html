@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-xs-10">
-    <!-- <ul class="list-group">
+    <ul class="list-group">
       <a
         class="list-group-item"
         style="cursor: pointer"
-        *ngFor="let ingredient of (itemListState | async).ingredients; let i = index"
-        (click)="onEditItem(i)"
+        *ngFor="let item of (itemListState | async).items; let i = index"
       >
-        {{ ingredient.name }} ({{ ingredient.amount }})
+        <button class="btn btn-primary" type="button" (click)="onAddItem(item)">Add to cart</button>
+        {{ item.title }}
       </a>
-    </ul> -->
+    </ul>
   </div>
 </div>

@@ -18,10 +18,9 @@ export function shoppingListReducer(state = initialState, action: ShoppingListAc
                 items : action.payload
             };
         case ShoppingListActions.ADD_ITEM : 
-            const items = [...state.items];
             return {
                 ...state,
-                items : [...state.items, action.payload]
+                items : [ ...state.items , action.payload ]
             };
         case ShoppingListActions.DELETE_ITEM :
             const oldItems = [...state.items];

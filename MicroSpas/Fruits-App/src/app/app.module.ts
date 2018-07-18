@@ -22,6 +22,7 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ItemsService } from './services/items.service';
 import { ItemsComponent } from './items/items.component';
 import { ItemDetailsComponent } from './items/item-details/item-details.component';
+import { ShoppingListSerivce } from './services/shopping-list.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { ItemDetailsComponent } from './items/item-details/item-details.componen
       maxAge: 10
     })
   ],
-  providers: [ LoginService, AuthGuard, ItemsService ],
+  providers: [ LoginService, AuthGuard, ItemsService , ShoppingListSerivce ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
