@@ -12,7 +12,7 @@ const initialState: State = {
 
 export function shoppingListReducer(state = initialState, action: ShoppingListActions.ShoppingListActions) {
     switch (action.type) {
-        case ShoppingListActions.SET_ITEMS :
+        case ShoppingListActions.SET_CART_ITEMS :
             return {
                 ...state,
                 items : action.payload

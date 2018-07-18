@@ -17,9 +17,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { reducers } from './store/app.store';
 import { AuthGuard } from './services/auth-guard.service';
-import { ItemListComponent } from './item-list/item-list.component';
+import { ItemListComponent } from './items/item-list/item-list.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ItemsService } from './services/items.service';
+import { ItemsComponent } from './items/items.component';
+import { ItemDetailsComponent } from './items/item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ItemsService } from './services/items.service';
     MainComponent,
     HeaderComponent,
     ItemListComponent,
-    ShoppingListComponent
+    ShoppingListComponent,
+    ItemsComponent,
+    ItemDetailsComponent
   ],
   imports: [
     BrowserModule,
