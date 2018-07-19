@@ -23,6 +23,7 @@ import { ItemsService } from './services/items.service';
 import { ItemsComponent } from './items/items.component';
 import { ItemDetailsComponent } from './items/item-details/item-details.component';
 import { ShoppingListSerivce } from './services/shopping-list.service';
+import { DropdownDirective } from './services/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ShoppingListSerivce } from './services/shopping-list.service';
     ItemListComponent,
     ShoppingListComponent,
     ItemsComponent,
-    ItemDetailsComponent
+    ItemDetailsComponent,
+    DropdownDirective
   ],
   imports: [
     BrowserModule,
