@@ -548,12 +548,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _items_items_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./items/items.component */ "./src/app/items/items.component.ts");
 /* harmony import */ var _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./items/item-details/item-details.component */ "./src/app/items/item-details/item-details.component.ts");
 /* harmony import */ var _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/shopping-list.service */ "./src/app/services/shopping-list.service.ts");
+/* harmony import */ var _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/dropdown.directive */ "./src/app/services/dropdown.directive.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -590,7 +592,8 @@ var AppModule = /** @class */ (function () {
                 _items_item_list_item_list_component__WEBPACK_IMPORTED_MODULE_16__["ItemListComponent"],
                 _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_17__["ShoppingListComponent"],
                 _items_items_component__WEBPACK_IMPORTED_MODULE_19__["ItemsComponent"],
-                _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_20__["ItemDetailsComponent"]
+                _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_20__["ItemDetailsComponent"],
+                _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_22__["DropdownDirective"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -634,7 +637,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <a routerLink=\"/\" class=\"navbar-brand\">Super Market</a>\r\n    </div>\r\n\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Fruits</a></li>\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/shopping-list\">Shopping List</a></li>\r\n      </ul>\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n        <li><a\r\n          style=\"cursor: pointer;\"\r\n          (click)=\"onLogout()\"\r\n          *ngIf=\"(authState | async).authenticated\">Logout</a></li>\r\n          \r\n        \r\n          \r\n      </ul>\r\n    </div>\r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <a routerLink=\"/\" class=\"navbar-brand\">Super Market</a>\r\n    </div>\r\n\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Fruits</a></li>\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/shopping-list\">Shopping List</a></li>\r\n      </ul>\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n        <li><a\r\n          style=\"cursor: pointer;\"\r\n          (click)=\"onLogout()\"\r\n          *ngIf=\"(authState | async).authenticated\">Logout</a></li>\r\n          \r\n        <li class=\"dropdown\" appDropdown>\r\n          <a style=\"cursor: pointer;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\">Other Stores<span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <!-- <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/fruits\">Fruits</a></li> -->\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/vegetables\">Vegetables</a></li>\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/dairy\">Dairy Products</a></li>\r\n          </ul>\r\n        </li>\r\n          \r\n      </ul>\r\n    </div> \r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1114,6 +1117,56 @@ var AuthGuard = /** @class */ (function () {
         __metadata("design:paramtypes", [_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"], _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]])
     ], AuthGuard);
     return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/dropdown.directive.ts":
+/*!************************************************!*\
+  !*** ./src/app/services/dropdown.directive.ts ***!
+  \************************************************/
+/*! exports provided: DropdownDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DropdownDirective", function() { return DropdownDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var DropdownDirective = /** @class */ (function () {
+    function DropdownDirective() {
+        this.isOpen = false;
+    }
+    DropdownDirective.prototype.toggleOpen = function () {
+        this.isOpen = !this.isOpen;
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostBinding"])('class.open'),
+        __metadata("design:type", Object)
+    ], DropdownDirective.prototype, "isOpen", void 0);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('click'),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", []),
+        __metadata("design:returntype", void 0)
+    ], DropdownDirective.prototype, "toggleOpen", null);
+    DropdownDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({
+            selector: '[appDropdown]'
+        })
+    ], DropdownDirective);
+    return DropdownDirective;
 }());
 
 
