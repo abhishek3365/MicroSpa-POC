@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { CookieService } from 'ngx-cookie-service';
 import { reducers } from './store/app.store';
 import { AuthGuard } from './services/auth-guard.service';
 import { ItemListComponent } from './items/item-list/item-list.component';
@@ -50,7 +51,7 @@ import { DropdownDirective } from './services/dropdown.directive';
       maxAge: 10
     })
   ],
-  providers: [ LoginService, AuthGuard, ItemsService , ShoppingListSerivce ],
+  providers: [ LoginService, AuthGuard, ItemsService , ShoppingListSerivce , CookieService  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

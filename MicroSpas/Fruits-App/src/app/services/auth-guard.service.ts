@@ -8,18 +8,19 @@ import * as moment from "moment";
 
 import * as fromApp from '../store/app.store';
 import * as fromAuth from '../store/reducers/auth.reducers';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-  constructor(private store: Store<fromApp.AppState>, public router : Router) {}
+  constructor(private store: Store<fromApp.AppState>, public router : Router,  private cookieService: CookieService ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.store.select('auth')
       .take(1)
       .map((authState: fromAuth.State) => {
         
-        var expiresAt  = JSON.parse( localStorage.getItem('expires_at') );
+        var expiresAt  = JSON.parse( this.cookieService.get('expires_at') );
     
         if( expiresAt ){
             

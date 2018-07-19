@@ -5,6 +5,7 @@ import { LoginService } from './services/login.service';
 
 import * as fromApp from './store/app.store';
 import { ShoppingListSerivce } from './services/shopping-list.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,9 @@ import { ShoppingListSerivce } from './services/shopping-list.service';
 export class AppComponent {
   title = 'app';
 
-  constructor( private loginService : LoginService , private store: Store<fromApp.AppState> , private shoppingListService : ShoppingListSerivce ){
+  constructor( private loginService : LoginService , private store: Store<fromApp.AppState> , private shoppingListService : ShoppingListSerivce, private cookieService: CookieService ){
     
-    var token = localStorage.getItem( 'token' );
+    var token = cookieService.get( 'token' );
     if( token )
       loginService.signIn( token );
 

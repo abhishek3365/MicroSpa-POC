@@ -9,6 +9,7 @@ import { Store } from '@ngrx/store';
 import * as AuthActions from '../store/actions/auth.actions';
 import * as fromApp from '../store/app.store';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class LoginService {
@@ -18,7 +19,7 @@ export class LoginService {
   name;
   token;
 
-  constructor(private http: HttpClient , private store: Store<fromApp.AppState>, public router : Router ) { 
+  constructor(private http: HttpClient , private store: Store<fromApp.AppState>, public router : Router, private cookieService: CookieService  ) { 
      this.email = localStorage.getItem('email');
      this.userType = localStorage.getItem('userType');
      this.name = localStorage.getItem('name');
@@ -52,8 +53,8 @@ export class LoginService {
             
             localStorage.setItem( 'email' , this.email  );
             localStorage.setItem( 'name' , this.name );
-            localStorage.setItem( 'token' , this.token );
-            localStorage.setItem( 'expires_at' , JSON.stringify(expiresAt.valueOf()) );
+            this.cookieService.set( 'token' , this.token );
+            this.cookieService.set( 'expires_at' , JSON.stringify(expiresAt.valueOf()) );
 
             this.signIn( this.token );
 
