@@ -22,13 +22,13 @@ app.get( '/fruits/*' , (req,res) => {
     res.sendfile( path.join( __dirname + "/public/fruits/index.html" ) )
 } );
 
-// app.get( '/app2/*' , (req,res) => {
-//     res.sendfile( path.join( __dirname + "/public/app2/index.html" ) )
-// } );
+app.get( '/vegetables/*' , (req,res) => {
+    res.sendfile( path.join( __dirname + "/public/vegetables/index.html" ) )
+} );
 
-// app.get( '/app3/*' , (req,res) => {
-//     res.sendfile( path.join( __dirname + "/public/app3/index.html" ) )
-// } );
+app.get( '/dairy/*' , (req,res) => {
+    res.sendfile( path.join( __dirname + "/public/dairy/index.html" ) )
+} );
 
 app.set( 'port' , PORT );
 
