@@ -466,6 +466,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _services_login_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./services/login.service */ "./src/app/services/login.service.ts");
 /* harmony import */ var _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./services/shopping-list.service */ "./src/app/services/shopping-list.service.ts");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -479,13 +480,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = /** @class */ (function () {
-    function AppComponent(loginService, store, shoppingListService) {
+    function AppComponent(loginService, store, shoppingListService, cookieService) {
         this.loginService = loginService;
         this.store = store;
         this.shoppingListService = shoppingListService;
+        this.cookieService = cookieService;
         this.title = 'app';
-        var token = localStorage.getItem('token');
+        var token = cookieService.get('token');
         if (token)
             loginService.signIn(token);
         var shoppingList = localStorage.getItem('shoppingList');
@@ -507,7 +510,7 @@ var AppComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.css */ "./src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [_services_login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"], _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_3__["ShoppingListSerivce"]])
+        __metadata("design:paramtypes", [_services_login_service__WEBPACK_IMPORTED_MODULE_2__["LoginService"], _ngrx_store__WEBPACK_IMPORTED_MODULE_1__["Store"], _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_3__["ShoppingListSerivce"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_4__["CookieService"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -540,21 +543,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _header_header_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./header/header.component */ "./src/app/header/header.component.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ngrx/store-devtools */ "./node_modules/@ngrx/store-devtools/fesm5/store-devtools.js");
-/* harmony import */ var _store_app_store__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./store/app.store */ "./src/app/store/app.store.ts");
-/* harmony import */ var _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/auth-guard.service */ "./src/app/services/auth-guard.service.ts");
-/* harmony import */ var _items_item_list_item_list_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./items/item-list/item-list.component */ "./src/app/items/item-list/item-list.component.ts");
-/* harmony import */ var _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./shopping-list/shopping-list.component */ "./src/app/shopping-list/shopping-list.component.ts");
-/* harmony import */ var _services_items_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./services/items.service */ "./src/app/services/items.service.ts");
-/* harmony import */ var _items_items_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./items/items.component */ "./src/app/items/items.component.ts");
-/* harmony import */ var _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./items/item-details/item-details.component */ "./src/app/items/item-details/item-details.component.ts");
-/* harmony import */ var _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./services/shopping-list.service */ "./src/app/services/shopping-list.service.ts");
-/* harmony import */ var _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/dropdown.directive */ "./src/app/services/dropdown.directive.ts");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
+/* harmony import */ var _store_app_store__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./store/app.store */ "./src/app/store/app.store.ts");
+/* harmony import */ var _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./services/auth-guard.service */ "./src/app/services/auth-guard.service.ts");
+/* harmony import */ var _items_item_list_item_list_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./items/item-list/item-list.component */ "./src/app/items/item-list/item-list.component.ts");
+/* harmony import */ var _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./shopping-list/shopping-list.component */ "./src/app/shopping-list/shopping-list.component.ts");
+/* harmony import */ var _services_items_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./services/items.service */ "./src/app/services/items.service.ts");
+/* harmony import */ var _items_items_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./items/items.component */ "./src/app/items/items.component.ts");
+/* harmony import */ var _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./items/item-details/item-details.component */ "./src/app/items/item-details/item-details.component.ts");
+/* harmony import */ var _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./services/shopping-list.service */ "./src/app/services/shopping-list.service.ts");
+/* harmony import */ var _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./services/dropdown.directive */ "./src/app/services/dropdown.directive.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -589,11 +594,11 @@ var AppModule = /** @class */ (function () {
                 _login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"],
                 _main_main_component__WEBPACK_IMPORTED_MODULE_9__["MainComponent"],
                 _header_header_component__WEBPACK_IMPORTED_MODULE_11__["HeaderComponent"],
-                _items_item_list_item_list_component__WEBPACK_IMPORTED_MODULE_16__["ItemListComponent"],
-                _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_17__["ShoppingListComponent"],
-                _items_items_component__WEBPACK_IMPORTED_MODULE_19__["ItemsComponent"],
-                _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_20__["ItemDetailsComponent"],
-                _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_22__["DropdownDirective"]
+                _items_item_list_item_list_component__WEBPACK_IMPORTED_MODULE_17__["ItemListComponent"],
+                _shopping_list_shopping_list_component__WEBPACK_IMPORTED_MODULE_18__["ShoppingListComponent"],
+                _items_items_component__WEBPACK_IMPORTED_MODULE_20__["ItemsComponent"],
+                _items_item_details_item_details_component__WEBPACK_IMPORTED_MODULE_21__["ItemDetailsComponent"],
+                _services_dropdown_directive__WEBPACK_IMPORTED_MODULE_23__["DropdownDirective"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
@@ -603,12 +608,12 @@ var AppModule = /** @class */ (function () {
                 _node_modules_angular_common_http__WEBPACK_IMPORTED_MODULE_7__["HttpClientModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["BrowserAnimationsModule"],
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_10__["NoopAnimationsModule"],
-                _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["StoreModule"].forRoot(_store_app_store__WEBPACK_IMPORTED_MODULE_14__["reducers"]),
+                _ngrx_store__WEBPACK_IMPORTED_MODULE_12__["StoreModule"].forRoot(_store_app_store__WEBPACK_IMPORTED_MODULE_15__["reducers"]),
                 _ngrx_store_devtools__WEBPACK_IMPORTED_MODULE_13__["StoreDevtoolsModule"].instrument({
                     maxAge: 10
                 })
             ],
-            providers: [_services_login_service__WEBPACK_IMPORTED_MODULE_8__["LoginService"], _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_15__["AuthGuard"], _services_items_service__WEBPACK_IMPORTED_MODULE_18__["ItemsService"], _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_21__["ShoppingListSerivce"]],
+            providers: [_services_login_service__WEBPACK_IMPORTED_MODULE_8__["LoginService"], _services_auth_guard_service__WEBPACK_IMPORTED_MODULE_16__["AuthGuard"], _services_items_service__WEBPACK_IMPORTED_MODULE_19__["ItemsService"], _services_shopping_list_service__WEBPACK_IMPORTED_MODULE_22__["ShoppingListSerivce"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_14__["CookieService"]],
             bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"]]
         })
     ], AppModule);
@@ -637,7 +642,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <a routerLink=\"/\" class=\"navbar-brand\">Super Market</a>\r\n    </div>\r\n\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Fruits</a></li>\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/shopping-list\">Shopping List</a></li>\r\n      </ul>\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n        <li><a\r\n          style=\"cursor: pointer;\"\r\n          (click)=\"onLogout()\"\r\n          *ngIf=\"(authState | async).authenticated\">Logout</a></li>\r\n          \r\n        <li class=\"dropdown\" appDropdown>\r\n          <a style=\"cursor: pointer;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\">Other Stores<span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <!-- <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/fruits\">Fruits</a></li> -->\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/vegetables\">Vegetables</a></li>\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/dairy\">Dairy Products</a></li>\r\n          </ul>\r\n        </li>\r\n          \r\n      </ul>\r\n    </div> \r\n  </div>\r\n</nav>\r\n"
+module.exports = "<nav class=\"navbar navbar-default\">\r\n  <div class=\"container-fluid\">\r\n    <div class=\"navbar-header\">\r\n      <a routerLink=\"/\" class=\"navbar-brand\">Super Market</a>\r\n    </div>\r\n\r\n    <div class=\"collapse navbar-collapse\">\r\n      <ul class=\"nav navbar-nav\">\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Fruits</a></li>\r\n        <!-- <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Vegetables</a></li> -->\r\n        <!-- <li routerLinkActive=\"active\"><a routerLink=\"/main/item-list\">Dairy Products</a></li> -->\r\n        <li routerLinkActive=\"active\"><a routerLink=\"/main/shopping-list\">Shopping List</a></li>\r\n      </ul>\r\n      <ul class=\"nav navbar-nav navbar-right\">\r\n\r\n        <li><a\r\n          style=\"cursor: pointer;\"\r\n          (click)=\"onLogout()\"\r\n          *ngIf=\"(authState | async).authenticated\">Logout</a></li>\r\n          \r\n        <li class=\"dropdown\" appDropdown>\r\n          <a style=\"cursor: pointer;\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\">Other Stores<span class=\"caret\"></span></a>\r\n          <ul class=\"dropdown-menu\">\r\n            <!-- <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/fruits\">Fruits</a></li> -->\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/vegetables\">Vegetables</a></li>\r\n            <li><a style=\"cursor: pointer;\" href=\"http://localhost:4202/dairy\">Dairy Products</a></li>\r\n          </ul>\r\n        </li>\r\n          \r\n      </ul>\r\n    </div> \r\n  </div>\r\n</nav>\r\n"
 
 /***/ }),
 
@@ -1071,6 +1076,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var rxjs_add_operator_map__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/add/operator/map */ "./node_modules/rxjs-compat/_esm5/add/operator/map.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1086,17 +1092,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var AuthGuard = /** @class */ (function () {
-    function AuthGuard(store, router) {
+    function AuthGuard(store, router, cookieService) {
         this.store = store;
         this.router = router;
+        this.cookieService = cookieService;
     }
     AuthGuard.prototype.canActivate = function (route, state) {
         var _this = this;
         return this.store.select('auth')
             .take(1)
             .map(function (authState) {
-            var expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+            var expiresAtString = _this.cookieService.get('expires_at');
+            if (!expiresAtString) {
+                _this.router.navigate(['/login']);
+                return false;
+            }
+            var expiresAt = JSON.parse(expiresAtString);
             if (expiresAt) {
                 if (moment__WEBPACK_IMPORTED_MODULE_5__().isBefore(moment__WEBPACK_IMPORTED_MODULE_5__(expiresAt))) {
                     return true;
@@ -1114,7 +1127,7 @@ var AuthGuard = /** @class */ (function () {
     };
     AuthGuard = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])(),
-        __metadata("design:paramtypes", [_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"], _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"]])
+        __metadata("design:paramtypes", [_ngrx_store__WEBPACK_IMPORTED_MODULE_2__["Store"], _angular_router__WEBPACK_IMPORTED_MODULE_0__["Router"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__["CookieService"]])
     ], AuthGuard);
     return AuthGuard;
 }());
@@ -1188,6 +1201,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/constants */ "./src/app/utils/constants.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _store_actions_items_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/items.actions */ "./src/app/store/actions/items.actions.ts");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1202,17 +1216,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ItemsService = /** @class */ (function () {
-    function ItemsService(httpClient, store) {
+    function ItemsService(httpClient, store, cookieService) {
         this.httpClient = httpClient;
         this.store = store;
+        this.cookieService = cookieService;
         this.setItems();
     }
     ItemsService.prototype.setItems = function () {
         var _this = this;
         return new Promise(function (resolve, reject) {
             _this.httpClient
-                .get(_utils_constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].BASE_URL + "fruits", { params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('token', localStorage.getItem('token')) })
+                .get(_utils_constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].BASE_URL + "fruits", { params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('token', _this.cookieService.get('token')) })
                 .subscribe(function (data) {
                 _this.store.dispatch(new _store_actions_items_actions__WEBPACK_IMPORTED_MODULE_4__["SetItems"](data.payload));
                 resolve();
@@ -1221,7 +1237,7 @@ var ItemsService = /** @class */ (function () {
     };
     ItemsService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__["CookieService"]])
     ], ItemsService);
     return ItemsService;
 }());
@@ -1248,6 +1264,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _store_actions_auth_actions__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../store/actions/auth.actions */ "./src/app/store/actions/auth.actions.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1264,11 +1281,13 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var LoginService = /** @class */ (function () {
-    function LoginService(http, store, router) {
+    function LoginService(http, store, router, cookieService) {
         this.http = http;
         this.store = store;
         this.router = router;
+        this.cookieService = cookieService;
         this.email = localStorage.getItem('email');
         this.userType = localStorage.getItem('userType');
         this.name = localStorage.getItem('name');
@@ -1293,8 +1312,8 @@ var LoginService = /** @class */ (function () {
                     var expiresAt = moment__WEBPACK_IMPORTED_MODULE_3__().add(24, 'hours');
                     localStorage.setItem('email', _this.email);
                     localStorage.setItem('name', _this.name);
-                    localStorage.setItem('token', _this.token);
-                    localStorage.setItem('expires_at', JSON.stringify(expiresAt.valueOf()));
+                    _this.cookieService.set('token', _this.token);
+                    _this.cookieService.set('expires_at', JSON.stringify(expiresAt.valueOf()));
                     _this.signIn(_this.token);
                     resolve();
                 }
@@ -1322,7 +1341,7 @@ var LoginService = /** @class */ (function () {
     };
     LoginService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_4__["Store"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_7__["CookieService"]])
     ], LoginService);
     return LoginService;
 }());
@@ -1346,6 +1365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/constants */ "./src/app/utils/constants.ts");
 /* harmony import */ var _ngrx_store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ngrx/store */ "./node_modules/@ngrx/store/fesm5/store.js");
 /* harmony import */ var _store_actions_shopping_list_actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../store/actions/shopping-list.actions */ "./src/app/store/actions/shopping-list.actions.ts");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-cookie-service */ "./node_modules/ngx-cookie-service/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1360,17 +1380,19 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var ShoppingListSerivce = /** @class */ (function () {
-    function ShoppingListSerivce(httpClient, store) {
+    function ShoppingListSerivce(httpClient, store, cookieService) {
         this.httpClient = httpClient;
         this.store = store;
+        this.cookieService = cookieService;
     }
     ShoppingListSerivce.prototype.setShoppingList = function () {
         var _this = this;
         var shoppingList = localStorage.getItem('shoppingList');
         return new Promise(function (resolve, reject) {
             _this.httpClient
-                .post(_utils_constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].BASE_URL + "items", { items: shoppingList }, { params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('token', localStorage.getItem('token')) })
+                .post(_utils_constants__WEBPACK_IMPORTED_MODULE_2__["Constants"].BASE_URL + "items", { items: shoppingList }, { params: new _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpParams"]().set('token', _this.cookieService.get('token')) })
                 .subscribe(function (data) {
                 console.log(data);
                 _this.store.dispatch(new _store_actions_shopping_list_actions__WEBPACK_IMPORTED_MODULE_4__["SetItems"](data.payload));
@@ -1380,7 +1402,7 @@ var ShoppingListSerivce = /** @class */ (function () {
     };
     ShoppingListSerivce = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"]])
+        __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], _ngrx_store__WEBPACK_IMPORTED_MODULE_3__["Store"], ngx_cookie_service__WEBPACK_IMPORTED_MODULE_5__["CookieService"]])
     ], ShoppingListSerivce);
     return ShoppingListSerivce;
 }());

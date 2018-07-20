@@ -20,7 +20,15 @@ export class AuthGuard implements CanActivate {
       .take(1)
       .map((authState: fromAuth.State) => {
         
-        var expiresAt  = JSON.parse( this.cookieService.get('expires_at') );
+        var expiresAtString = this.cookieService.get('expires_at')
+
+        if( !expiresAtString ){
+            this.router.navigate( ['/login'] );
+            return false;
+        }
+             
+
+        var expiresAt  = JSON.parse( expiresAtString );
     
         if( expiresAt ){
             
