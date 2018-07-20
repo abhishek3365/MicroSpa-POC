@@ -18,7 +18,7 @@ export class ItemsService {
         
         return new Promise( ( resolve , reject ) => {
             this.httpClient
-            .get<any>( Constants.BASE_URL + `fruits` , { params : new HttpParams().set('token',this.cookieService.get('token')) } )
+            .get<any>( Constants.BASE_URL + Constants.APP_CONSTANTS.ITEMS_API , { params : new HttpParams().set('token',this.cookieService.get('token')) } )
             .subscribe( (data) => {
                 this.store.dispatch( new ItemActions.SetItems(data.payload) );
                 resolve();
